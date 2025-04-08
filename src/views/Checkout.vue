@@ -226,63 +226,114 @@ export default {
 <style scoped>
 .checkout-page {
   margin-bottom: 40px;
+  background-color: #121212;
+  color: #e0e0e0;
+  min-height: 80vh;
+  padding: 40px 0;
 }
 
 .page-header {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
+  text-align: center;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #1a1a1a;
+  border-bottom: 2px solid #22c55e;
 }
 
 .page-header h1 {
-  font-size: 28px;
+  font-size: 32px;
   margin-bottom: 10px;
+  color: #ffffff;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .breadcrumbs {
-  color: #777;
+  color: #999;
   font-size: 14px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
 }
 
 .breadcrumbs a {
-  color: #333;
+  color: #22c55e;
   text-decoration: none;
+  transition: color 0.3s ease;
 }
 
 .checkout-content {
   display: grid;
   grid-template-columns: 1fr 400px;
   gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 .customer-details, .order-summary {
-  background-color: #fff;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  padding: 25px;
+  background-color: #1a1a1a;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  padding: 30px;
+  border: 1px solid #333;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.customer-details:hover, .order-summary:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  border-color: #22c55e;
 }
 
 .customer-details h2, .order-summary h2 {
-  font-size: 20px;
+  font-size: 22px;
   margin-bottom: 20px;
   padding-bottom: 10px;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #333;
+  color: #fff;
+  font-weight: 600;
+  position: relative;
+}
+
+.customer-details h2:after, .order-summary h2:after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background-color: #22c55e;
 }
 
 .form-group {
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 
 .form-group label {
   display: block;
-  margin-bottom: 8px;
-  font-weight: bold;
+  margin-bottom: 10px;
+  font-weight: 500;
+  color: #ccc;
 }
 
 .form-group input, .form-group textarea {
   width: 100%;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 14px;
+  padding: 12px 15px;
+  border: 1px solid #444;
+  border-radius: 6px;
+  font-size: 15px;
+  background-color: #252525;
+  color: #e0e0e0;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus, .form-group textarea:focus {
+  border-color: #22c55e;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.2);
 }
 
 .form-group textarea {
@@ -298,6 +349,15 @@ export default {
   margin-bottom: 15px;
   display: flex;
   align-items: center;
+  background-color: #252525;
+  border-radius: 8px;
+  padding: 15px;
+  border: 1px solid #444;
+  transition: border-color 0.3s ease;
+}
+
+.payment-method:hover {
+  border-color: #22c55e;
 }
 
 .payment-method input {
@@ -312,24 +372,41 @@ export default {
 }
 
 .back-to-cart {
-  color: #333;
-  text-decoration: underline;
+  color: #aaa;
+  text-decoration: none;
+  font-size: 15px;
+  transition: color 0.3s ease;
+  display: flex;
+  align-items: center;
+}
+
+.back-to-cart:before {
+  content: '←';
+  margin-right: 5px;
+}
+
+.back-to-cart:hover {
+  color: #22c55e;
 }
 
 .place-order-btn {
-  padding: 12px 25px;
-  background-color: #3b82f6;
+  padding: 14px 30px;
+  background-color: #22c55e;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   font-size: 16px;
-  font-weight: bold;
+  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .place-order-btn:hover {
-  background-color: #1150b4;
+  background-color: #16a34a;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(34, 197, 94, 0.4);
 }
 
 .summary-items {
@@ -342,7 +419,12 @@ export default {
   display: flex;
   margin-bottom: 15px;
   padding-bottom: 15px;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #333;
+  transition: transform 0.3s ease;
+}
+
+.summary-item:hover {
+  transform: translateX(5px);
 }
 
 .summary-item:last-child {
@@ -355,6 +437,9 @@ export default {
   width: 60px;
   height: 60px;
   margin-right: 15px;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid #444;
 }
 
 .item-image img {
@@ -368,24 +453,27 @@ export default {
 }
 
 .item-name {
-  font-size: 14px;
-  margin-bottom: 5px;
+  font-size: 15px;
+  margin-bottom: 8px;
+  color: #e0e0e0;
+  font-weight: 500;
 }
 
 .item-price-qty {
   font-size: 13px;
-  color: #777;
+  color: #aaa;
 }
 
 .item-total {
   font-weight: bold;
   margin-left: 15px;
+  color: #22c55e;
 }
 
 .summary-totals {
   margin-top: 20px;
   padding-top: 20px;
-  border-top: 1px solid #eee;
+  border-top: 1px solid #333;
 }
 
 .summary-row {
@@ -397,42 +485,53 @@ export default {
 .summary-row.total {
   margin-top: 15px;
   padding-top: 15px;
-  border-top: 1px solid #eee;
-  font-size: 18px;
+  border-top: 1px solid #333;
+  font-size: 20px;
   font-weight: bold;
+  color: #22c55e;
 }
 
 .empty-checkout {
-  background-color: #fff;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  padding: 40px 20px;
+  background-color: #1a1a1a;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  padding: 50px 30px;
   text-align: center;
+  border: 1px solid #333;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .empty-checkout h2 {
-  font-size: 24px;
-  margin-bottom: 10px;
+  font-size: 28px;
+  margin-bottom: 15px;
+  color: #fff;
 }
 
 .empty-checkout p {
-  color: #777;
+  color: #aaa;
   margin-bottom: 30px;
+  font-size: 16px;
+  line-height: 1.6;
 }
 
 .continue-shopping-btn {
   display: inline-block;
-  padding: 12px 30px;
-  background-color: #3b82f6;
+  padding: 14px 32px;
+  background-color: #22c55e;
   color: white;
-  border-radius: 5px;
-  font-weight: bold;
+  border-radius: 8px;
+  font-weight: 600;
   text-decoration: none;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .continue-shopping-btn:hover {
-  background-color: #c0392b;
+  background-color: #16a34a;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(34, 197, 94, 0.4);
 }
 
 @media (max-width: 992px) {

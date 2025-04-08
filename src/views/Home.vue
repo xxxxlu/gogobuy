@@ -1,46 +1,26 @@
 <template>
   <div class="home">
-    <!-- Hero Banner Section -->
-    <div class="hero-banner">
+    <!-- Hero Section -->
+    <div class="hero-section">
       <div class="container">
         <div class="hero-content">
-          <h1>Welcome to ABC Shop</h1>
-          <p>Discover amazing products at great prices</p>
-          <router-link to="/products" class="shop-now-btn">Shop Now</router-link>
-        </div>
-        <div class="hero-image">
-          <img src="https://ext.same-assets.com/1656695661/479450343.jpeg" alt="Featured Products" />
-        </div>
-      </div>
-    </div>
-    
-    <!-- Categories Section -->
-    <div class="categories-section">
-      <div class="container">
-        <h2 class="section-title">Shop by Category</h2>
-        <div class="categories-grid">
-          <div class="category-card" v-for="category in categories" :key="category.id">
-            <router-link :to="`/products?category=${category.slug}`">
-              <div class="category-icon">
-                <img :src="getCategoryImage(category.slug)" :alt="category.name">
-              </div>
-              <h3>{{ category.name }}</h3>
-            </router-link>
+          <h1>Welcome to <span class="highlight">GoGoBuy</span></h1>
+          <p class="tagline">Premium E-Commerce Experience</p>
+          <div class="hero-description">
+            <p>Discover a curated collection of exceptional products designed to elevate your lifestyle.</p>
           </div>
+          <router-link to="/products" class="shop-now-btn">Explore Products</router-link>
         </div>
       </div>
     </div>
     
-    <!-- Latest Products Section -->
-    <div class="latest-products">
+    <!-- About Section -->
+    <div class="about-section">
       <div class="container">
-        <h2 class="section-title">Latest Products</h2>
-        <div class="product-grid">
-          <product-card
-            v-for="product in latestProducts"
-            :key="product.id"
-            :product="product"
-          />
+        <div class="about-content">
+          <h2>About <span class="highlight">GoGoBuy</span></h2>
+          <p>Welcome to GoGoBuy, your premium online shopping destination. We're committed to providing exceptional products and outstanding customer service. Our carefully curated collection features top-quality items from trusted brands and artisans worldwide.</p>
+          <p>At GoGoBuy, we believe shopping should be enjoyable, simple, and rewarding. Whether you're seeking everyday essentials or special indulgences, we're here to help you discover products that enhance your life.</p>
         </div>
       </div>
     </div>
@@ -48,287 +28,365 @@
     <!-- Feature Section -->
     <div class="features-section">
       <div class="container">
-        <div class="feature">
-          <div class="feature-icon">🚚</div>
-          <h3>Fast Shipping</h3>
-          <p>Free shipping on all orders over $50</p>
+        <h2>Why Choose <span class="highlight">GoGoBuy</span></h2>
+        <div class="features-grid">
+          <div class="feature">
+            <div class="feature-icon">✨</div>
+            <h3>Premium Quality</h3>
+            <p>Carefully selected products that meet our high standards</p>
+          </div>
+          <div class="feature">
+            <div class="feature-icon">🚚</div>
+            <h3>Fast Delivery</h3>
+            <p>Quick and reliable shipping to your doorstep</p>
+          </div>
+          <div class="feature">
+            <div class="feature-icon">🔒</div>
+            <h3>Secure Payment</h3>
+            <p>Multiple safe payment options for your convenience</p>
+          </div>
+          <div class="feature">
+            <div class="feature-icon">💬</div>
+            <h3>24/7 Support</h3>
+            <p>Our dedicated team is always ready to assist you</p>
+          </div>
         </div>
-        <div class="feature">
-          <div class="feature-icon">🔄</div>
-          <h3>Easy Returns</h3>
-          <p>30-day return policy</p>
-        </div>
-        <div class="feature">
-          <div class="feature-icon">🔒</div>
-          <h3>Secure Payment</h3>
-          <p>100% secure payment processing</p>
-        </div>
-        <div class="feature">
-          <div class="feature-icon">💬</div>
-          <h3>24/7 Support</h3>
-          <p>Dedicated support team</p>
-        </div>
+      </div>
+    </div>
+    
+    <!-- CTA Section -->
+    <div class="cta-section">
+      <div class="container">
+        <h2>Ready to Explore?</h2>
+        <p>Discover our extensive range of high-quality products</p>
+        <router-link to="/products" class="cta-button">Shop Now</router-link>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
-import ProductCard from '../components/ProductCard.vue'
-
 export default {
-  name: 'Home',
-  components: {
-    ProductCard
-  },
-  computed: {
-    ...mapState(['products', 'categories']),
-    latestProducts() {
-      // 限制为最新的8个产品
-      return this.products.slice(0, 8)
-    }
-  },
-  methods: {
-    getCategoryImage(slug) {
-      const images = {
-        'Bedding': 'https://m.media-amazon.com/images/I/811VZKvFwZL._AC_UL640_FMwebp_QL65_.jpg',
-        'Bath': 'https://m.media-amazon.com/images/I/61ML-XytWhL._AC_UL640_FMwebp_QL65_.jpg'
-      }
-      return images[slug] || 'https://m.media-amazon.com/images/I/811VZKvFwZL._AC_UL640_FMwebp_QL65_.jpg'
-    }
-  }
+  name: 'Home'
 }
 </script>
 
 <style scoped>
 .home {
-  padding-bottom: 48px;
+  padding-bottom: 0;
+  color: #e2e2e2;
 }
 
-/* Hero Banner */
-.hero-banner {
-  background-color: #f0f5ff;
-  padding: 64px 0;
-  margin-bottom: 48px;
+/* Hero Section */
+.hero-section {
+  background-color: #000000;
+  padding: 120px 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
 }
 
-.hero-banner .container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  max-width: 1200px;
-  margin: 0 auto;
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, rgba(76, 175, 80, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
 }
 
 .hero-content {
-  flex: 1;
-  padding-right: 48px;
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
 }
 
 .hero-content h1 {
-  font-size: 42px;
+  font-size: 60px;
   font-weight: 700;
-  color: #1e293b;
-  margin-bottom: 16px;
-  line-height: 1.2;
+  margin-bottom: 20px;
+  letter-spacing: -1px;
+  line-height: 1.1;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #4CAF50, #81C784);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-.hero-content p {
+.highlight {
+  color: #4CAF50;
+  font-weight: 700;
+}
+
+.tagline {
+  font-size: 24px;
+  color: #999;
+  margin-bottom: 30px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.hero-description {
+  max-width: 600px;
+  margin: 0 auto 40px;
   font-size: 18px;
-  color: #475569;
-  margin-bottom: 32px;
+  color: #999;
+  line-height: 1.6;
 }
 
 .shop-now-btn {
   display: inline-block;
-  background-color: #3b82f6;
+  background-color: #4CAF50;
   color: white;
   font-weight: 600;
-  padding: 14px 28px;
-  border-radius: 8px;
+  padding: 16px 36px;
+  border-radius: 4px;
   text-decoration: none;
-  transition: background-color 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.shop-now-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.7s ease;
+  z-index: -1;
+}
+
+.shop-now-btn:hover::before {
+  left: 100%;
 }
 
 .shop-now-btn:hover {
-  background-color: #2563eb;
+  background-color: #3b9c3f;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(76, 175, 80, 0.3);
 }
 
-.hero-image {
-  flex: 1;
-  text-align: right;
+/* About Section */
+.about-section {
+  background-color: #121212;
+  padding: 100px 0;
 }
 
-.hero-image img {
-  max-width: 100%;
-  border-radius: 16px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-}
-
-/* Categories Section */
-.categories-section {
-  margin-bottom: 48px;
-}
-
-.section-title {
-  font-size: 32px;
-  font-weight: 600;
-  color: #1e293b;
-  text-align: center;
-  margin-bottom: 32px;
-}
-
-.categories-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 24px;
-  max-width: 1200px;
+.about-content {
+  max-width: 800px;
   margin: 0 auto;
-}
-
-.category-card {
-  background-color: #f8fafc;
-  border-radius: 12px;
-  padding: 24px;
   text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 1px solid #e2e8f0;
 }
 
-.category-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+.about-content h2 {
+  font-size: 36px;
+  margin-bottom: 30px;
+  position: relative;
+  display: inline-block;
 }
 
-.category-card a {
-  text-decoration: none;
-  color: inherit;
+.about-content h2::after {
+  content: '';
+  position: absolute;
+  width: 60px;
+  height: 3px;
+  background-color: #4CAF50;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
-.category-icon {
-  height: 120px;
-  width: 120px;
-  margin: 0 auto 16px;
-  overflow: hidden;
-  border-radius: 50%;
-  border: 4px solid #e0e7ff;
-}
-
-.category-icon img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-}
-
-.category-card:hover .category-icon img {
-  transform: scale(1.1);
-}
-
-.category-card h3 {
+.about-content p {
+  margin-bottom: 24px;
+  line-height: 1.8;
+  color: #999;
   font-size: 18px;
-  font-weight: 600;
-  color: #334155;
-}
-
-/* Latest Products */
-.latest-products {
-  margin-bottom: 48px;
-}
-
-.latest-products .container {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.product-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 24px;
 }
 
 /* Features Section */
 .features-section {
-  background-color: #f8fafc;
-  padding: 48px 0;
-  margin-top: 48px;
+  background-color: #0a0a0a;
+  padding: 100px 0;
+  text-align: center;
 }
 
-.features-section .container {
+.features-section h2 {
+  font-size: 36px;
+  margin-bottom: 50px;
+  position: relative;
+  display: inline-block;
+}
+
+.features-section h2::after {
+  content: '';
+  position: absolute;
+  width: 60px;
+  height: 3px;
+  background-color: #4CAF50;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.features-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 32px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
   max-width: 1200px;
   margin: 0 auto;
 }
 
 .feature {
+  background-color: #1a1a1a;
+  border-radius: 8px;
+  padding: 40px 30px;
   text-align: center;
-  padding: 24px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #333;
+}
+
+.feature:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  border-color: #4CAF50;
 }
 
 .feature-icon {
   font-size: 48px;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
+  display: inline-block;
+  height: 80px;
+  width: 80px;
+  line-height: 80px;
+  background-color: rgba(76, 175, 80, 0.1);
+  border-radius: 50%;
 }
 
 .feature h3 {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 600;
-  color: #1e293b;
-  margin-bottom: 8px;
+  color: #e2e2e2;
+  margin-bottom: 15px;
 }
 
 .feature p {
-  color: #475569;
+  color: #999;
+  line-height: 1.6;
+}
+
+/* CTA Section */
+.cta-section {
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1607082350899-7e105aa886ae?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  padding: 120px 0;
+  text-align: center;
+  color: #fff;
+}
+
+.cta-section h2 {
+  font-size: 42px;
+  margin-bottom: 20px;
+}
+
+.cta-section p {
+  font-size: 20px;
+  margin-bottom: 40px;
+  color: #ccc;
+}
+
+.cta-button {
+  display: inline-block;
+  background-color: #4CAF50;
+  color: white;
+  font-weight: 600;
+  padding: 16px 36px;
+  border-radius: 4px;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #3b9c3f;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(76, 175, 80, 0.3);
 }
 
 /* Responsive Styles */
 @media (max-width: 992px) {
-  .hero-banner .container {
-    flex-direction: column;
-    padding: 0 24px;
+  .container {
+    padding: 0 30px;
   }
   
-  .hero-content {
-    padding-right: 0;
-    margin-bottom: 32px;
-    text-align: center;
+  .hero-content h1 {
+    font-size: 48px;
   }
   
-  .hero-image {
-    width: 100%;
-  }
-  
-  .categories-section .container,
-  .latest-products .container {
-    padding: 0 24px;
+  .tagline {
+    font-size: 20px;
   }
 }
 
 @media (max-width: 768px) {
-  .hero-banner {
-    padding: 48px 0;
+  .hero-section {
+    padding: 80px 0;
   }
   
   .hero-content h1 {
-    font-size: 32px;
+    font-size: 36px;
   }
   
-  .section-title {
-    font-size: 28px;
-    margin-bottom: 24px;
+  .tagline {
+    font-size: 18px;
+  }
+  
+  .hero-description {
+    font-size: 16px;
+  }
+  
+  .about-section,
+  .features-section,
+  .cta-section {
+    padding: 70px 0;
+  }
+  
+  .about-content h2,
+  .features-section h2,
+  .cta-section h2 {
+    font-size: 30px;
   }
 }
 
 @media (max-width: 480px) {
   .hero-content h1 {
-    font-size: 28px;
+    font-size: 30px;
+  }
+  
+  .tagline {
+    font-size: 16px;
+    letter-spacing: 2px;
+  }
+  
+  .shop-now-btn,
+  .cta-button {
+    padding: 14px 28px;
+    font-size: 14px;
   }
   
   .feature {
-    padding: 16px;
+    padding: 30px 20px;
   }
 }
 </style>

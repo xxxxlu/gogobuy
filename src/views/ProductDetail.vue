@@ -189,27 +189,34 @@ export default {
 <style scoped>
 .product-detail {
   padding: 48px 0;
-  background-color: #ffffff;
+  background-color: #121212;
+  color: #e0e0e0;
+  min-height: 80vh;
 }
 
 .breadcrumbs {
   margin-bottom: 32px;
-  color: #64748b;
+  color: #aaa;
   font-size: 14px;
   display: flex;
   align-items: center;
   gap: 8px;
+  background-color: #1a1a1a;
+  padding: 12px 20px;
+  border-radius: 8px;
+  border-left: 3px solid #22c55e;
 }
 
 .breadcrumbs a {
-  color: #475569;
+  color: #22c55e;
   text-decoration: none;
   transition: color 0.2s ease;
   font-weight: 500;
 }
 
 .breadcrumbs a:hover {
-  color: #3b82f6;
+  color: #16a34a;
+  text-decoration: underline;
 }
 
 .breadcrumbs .separator {
@@ -217,16 +224,19 @@ export default {
 }
 
 .breadcrumbs .current {
-  color: #1e293b;
+  color: #fff;
   font-weight: 500;
 }
 
 .product-container {
   display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-  gap: 64px;
-  margin-bottom: 64px;
-  align-items: start;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  background-color: #1a1a1a;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  border: 1px solid #333;
 }
 
 .product-images {
@@ -239,8 +249,9 @@ export default {
   padding-top: 100%;
   border-radius: 16px;
   overflow: hidden;
-  background-color: #f8fafc;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  border: 2px solid #333;
+  transition: border-color 0.3s ease;
 }
 
 .main-image img {
@@ -265,9 +276,11 @@ export default {
 .product-title {
   font-size: 36px;
   font-weight: 600;
-  color: #1e293b;
+  color: #fff;
   margin-bottom: 24px;
   line-height: 1.2;
+  border-bottom: 2px solid #22c55e;
+  padding-bottom: 15px;
 }
 
 .product-price {
@@ -277,31 +290,33 @@ export default {
   gap: 16px;
   margin-bottom: 28px;
   padding: 24px;
-  background-color: #f8fafc;
+  background-color: #252525;
   border-radius: 12px;
+  border: 1px solid #333;
 }
 
 .current-price {
   font-size: 36px;
   font-weight: 700;
-  color: #3b82f6;
+  color: #22c55e;
   line-height: 1;
 }
 
 .original-price {
   font-size: 20px;
   text-decoration: line-through;
-  color: #94a3b8;
+  color: #888;
 }
 
 .discount {
-  background-color: #dbeafe;
-  color: #3b82f6;
+  background-color: #22c55e;
+  color: #fff;
   padding: 8px 16px;
   border-radius: 24px;
   font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.5px;
+  box-shadow: 0 4px 8px rgba(34, 197, 94, 0.3);
 }
 
 .stock-status {
@@ -311,11 +326,11 @@ export default {
 }
 
 .in-stock {
-  color: #10b981;
+  color: #22c55e;
 }
 
 .out-of-stock {
-  color: #ef4444;
+  color: #f87171;
 }
 
 .quantity-selector {
@@ -326,31 +341,32 @@ export default {
   display: block;
   margin-bottom: 12px;
   font-weight: 500;
-  color: #475569;
+  color: #e0e0e0;
 }
 
 .quantity-controls {
   display: inline-flex;
   align-items: center;
-  border: 1px solid #e2e8f0;
+  border: 1px solid #444;
   border-radius: 8px;
   overflow: hidden;
+  background-color: #252525;
 }
 
 .quantity-controls button {
   width: 44px;
   height: 44px;
   border: none;
-  background-color: #f8fafc;
-  color: #475569;
+  background-color: #333;
+  color: #fff;
   font-size: 18px;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .quantity-controls button:hover:not(:disabled) {
-  background-color: #f1f5f9;
-  color: #3b82f6;
+  background-color: #22c55e;
+  color: #fff;
 }
 
 .quantity-controls button:disabled {
@@ -362,12 +378,13 @@ export default {
   width: 60px;
   height: 44px;
   border: none;
-  border-left: 1px solid #e2e8f0;
-  border-right: 1px solid #e2e8f0;
+  border-left: 1px solid #444;
+  border-right: 1px solid #444;
   text-align: center;
   font-size: 16px;
   font-weight: 500;
-  color: #1e293b;
+  color: #e0e0e0;
+  background-color: #252525;
   -moz-appearance: textfield;
   appearance: textfield;
 }
@@ -395,49 +412,58 @@ export default {
 }
 
 .add-to-cart-btn {
-  background-color: #ffffff;
-  color: #3b82f6;
-  border: 2px solid #3b82f6;
+  background-color: #1a1a1a;
+  color: #22c55e;
+  border: 2px solid #22c55e;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .buy-now-btn {
-  background-color: #3b82f6;
+  background-color: #22c55e;
   color: #ffffff;
   border: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .add-to-cart-btn:hover:not(:disabled) {
-  background-color: #eff6ff;
+  background-color: #252525;
+  box-shadow: 0 5px 15px rgba(34, 197, 94, 0.2);
 }
 
 .buy-now-btn:hover:not(:disabled) {
-  background-color: #2563eb;
+  background-color: #16a34a;
+  box-shadow: 0 5px 15px rgba(34, 197, 94, 0.4);
 }
 
 .add-to-cart-btn:disabled, .buy-now-btn:disabled {
-  background-color: #f1f5f9;
-  color: #94a3b8;
-  border-color: #e2e8f0;
+  background-color: #252525;
+  color: #666;
+  border-color: #333;
   cursor: not-allowed;
 }
 
 .product-details {
   margin-bottom: 40px;
-  color: #475569;
+  color: #ccc;
   line-height: 1.8;
 }
 
 .product-details h3 {
   font-size: 20px;
   font-weight: 600;
-  color: #1e293b;
+  color: #fff;
   margin-bottom: 16px;
+  border-left: 3px solid #22c55e;
+  padding-left: 10px;
 }
 
 .delivery-info {
-  background-color: #f8fafc;
+  background-color: #252525;
   padding: 24px;
   border-radius: 12px;
+  border: 1px solid #333;
 }
 
 .delivery-option {
@@ -445,7 +471,7 @@ export default {
   align-items: center;
   gap: 12px;
   padding: 12px 0;
-  border-bottom: 1px solid #e2e8f0;
+  border-bottom: 1px solid #444;
 }
 
 .delivery-option:last-child {
@@ -460,7 +486,7 @@ export default {
 }
 
 .delivery-option span {
-  color: #475569;
+  color: #ccc;
   font-size: 15px;
 }
 
@@ -471,9 +497,22 @@ export default {
 .section-title {
   font-size: 28px;
   font-weight: 600;
-  color: #1e293b;
+  color: #fff;
   margin-bottom: 32px;
   text-align: center;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.section-title:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background-color: #22c55e;
 }
 
 .related-products-grid {
@@ -485,8 +524,11 @@ export default {
 .loading {
   text-align: center;
   padding: 80px;
-  color: #64748b;
+  color: #aaa;
   font-size: 16px;
+  background-color: #1a1a1a;
+  border-radius: 12px;
+  border: 1px solid #333;
 }
 
 @media (max-width: 1200px) {

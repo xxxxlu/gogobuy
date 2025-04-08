@@ -151,16 +151,26 @@ export default {
 <style scoped>
 .checkout-success {
   padding: 48px 0;
-  background-color: #f8fafc;
+  background-color: #121212;
+  color: #e0e0e0;
+  min-height: 80vh;
 }
 
 .success-card {
-  background-color: #ffffff;
+  background-color: #1a1a1a;
   border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
   padding: 48px;
   max-width: 900px;
   margin: 0 auto;
+  border: 1px solid #333;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.success-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+  border-color: #22c55e;
 }
 
 .success-icon {
@@ -171,12 +181,26 @@ export default {
 .checkmark-circle {
   width: 80px;
   height: 80px;
-  background-color: #4caf50;
+  background-color: #22c55e;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto;
+  box-shadow: 0 0 20px rgba(34, 197, 94, 0.5);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(34, 197, 94, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+  }
 }
 
 .checkmark {
@@ -189,23 +213,26 @@ export default {
 
 h1 {
   text-align: center;
-  color: #1e293b;
+  color: #ffffff;
   font-size: 32px;
   margin-bottom: 24px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .order-number {
   text-align: center;
   font-size: 18px;
-  color: #475569;
+  color: #22c55e;
   margin-bottom: 32px;
+  font-weight: 600;
 }
 
 .success-message {
   text-align: center;
   margin-bottom: 32px;
   line-height: 1.8;
-  color: #475569;
+  color: #ccc;
 }
 
 .order-details {
@@ -216,8 +243,19 @@ h1 {
   font-size: 24px;
   margin-bottom: 24px;
   padding-bottom: 12px;
-  border-bottom: 1px solid #e2e8f0;
-  color: #1e293b;
+  border-bottom: 1px solid #333;
+  color: #ffffff;
+  position: relative;
+}
+
+.order-details h2:after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background-color: #22c55e;
 }
 
 .details-section {
@@ -227,19 +265,26 @@ h1 {
 .details-section h3 {
   font-size: 20px;
   margin-bottom: 16px;
-  color: #334155;
+  color: #22c55e;
+  font-weight: 600;
 }
 
 .info-item {
   display: flex;
   margin-bottom: 12px;
+  transition: transform 0.3s ease;
+  padding: 8px 0;
+}
+
+.info-item:hover {
+  transform: translateX(5px);
 }
 
 .label {
   font-weight: 600;
   width: 140px;
   flex-shrink: 0;
-  color: #1e293b;
+  color: #e0e0e0;
 }
 
 .summary-items {
@@ -251,7 +296,12 @@ h1 {
   justify-content: space-between;
   margin-bottom: 12px;
   padding-bottom: 12px;
-  border-bottom: 1px solid #f1f5f9;
+  border-bottom: 1px solid #333;
+  transition: transform 0.3s ease;
+}
+
+.summary-item:hover {
+  transform: translateX(5px);
 }
 
 .summary-totals {
@@ -269,7 +319,8 @@ h1 {
   font-weight: 700;
   margin-top: 12px;
   padding-top: 12px;
-  border-top: 1px solid #e2e8f0;
+  border-top: 1px solid #333;
+  color: #22c55e;
 }
 
 .actions {
@@ -288,22 +339,31 @@ h1 {
 }
 
 .continue-btn {
-  background-color: #3b82f6;
+  background-color: #22c55e;
   color: white;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .print-btn {
-  background-color: #f1f5f9;
-  color: #1e293b;
-  border: 1px solid #e2e8f0;
+  background-color: #252525;
+  color: #e0e0e0;
+  border: 1px solid #444;
+  transition: all 0.3s ease;
 }
 
 .continue-btn:hover {
-  background-color: #2563eb;
+  background-color: #16a34a;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(34, 197, 94, 0.4);
 }
 
 .print-btn:hover {
-  background-color: #e2e8f0;
+  background-color: #333;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  border-color: #22c55e;
 }
 
 @media (max-width: 768px) {

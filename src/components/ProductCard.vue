@@ -6,6 +6,15 @@
         :alt="product.name"
         @error="handleImageError"
       />
+      <div class="product-overlay">
+        <button 
+          class="quick-view-btn"
+          @click="addToCart"
+          :disabled="product.stock <= 0"
+        >
+          {{ product.stock > 0 ? 'ADD TO CART' : 'OUT OF STOCK' }}
+        </button>
+      </div>
       <div class="discount" v-if="discountPercentage > 0">
         {{ discountPercentage }}% OFF
       </div>
@@ -20,13 +29,10 @@
           Rs. {{ formatPrice(product.originalPrice) }}
         </span>
       </div>
-      <button
-        class="add-to-cart-btn"
-        @click="addToCart"
-        :disabled="product.stock <= 0"
-      >
-        {{ product.stock > 0 ? 'ORDER NOW' : 'OUT OF STOCK' }}
-      </button>
+      <div class="product-stock" :class="{ 'in-stock': product.stock > 0, 'out-of-stock': product.stock <= 0 }">
+        <span v-if="product.stock > 0">In Stock</span>
+        <span v-else>Out of Stock</span>
+      </div>
     </div>
   </div>
 </template>
@@ -67,20 +73,25 @@ export default {
 
 <style scoped>
 .product-card {
-  background-color: #fff;
-  border-radius: 5px;
+  background-color: #1a1a1a;
+  border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #333;
 }
 
 .product-card:hover {
-  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  border-color: #4CAF50;
 }
 
 .product-image {
   position: relative;
-  height: 200px;
+  height: 280px;
   overflow: hidden;
 }
 
@@ -88,77 +99,136 @@ export default {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.product-card:hover .product-image img {
+  transform: scale(1.1);
+}
+
+.product-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.product-card:hover .product-overlay {
+  opacity: 1;
+}
+
+.quick-view-btn {
+  padding: 12px 24px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  transform: translateY(20px);
+  opacity: 0;
+}
+
+.product-card:hover .quick-view-btn {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.quick-view-btn:hover {
+  background-color: #3b9c3f;
+  box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
+}
+
+.quick-view-btn:disabled {
+  background-color: #555;
+  cursor: not-allowed;
 }
 
 .discount {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color: #3b82f6;
+  top: 15px;
+  left: 15px;
+  background-color: #4CAF50;
   color: white;
-  padding: 5px 10px;
-  border-radius: 3px;
-  font-size: 12px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 14px;
   font-weight: bold;
+  z-index: 2;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .product-details {
-  padding: 15px;
+  padding: 20px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .product-title {
-  font-size: 16px;
-  margin-bottom: 10px;
+  font-size: 18px;
+  margin-bottom: 15px;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
-  height: 44px;
+  height: 50px;
+  line-height: 1.4;
 }
 
 .product-title a {
-  color: #333;
+  color: #e2e2e2;
   text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.product-title a:hover {
+  color: #4CAF50;
 }
 
 .product-price {
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
 }
 
 .current-price {
-  font-size: 18px;
+  font-size: 22px;
   font-weight: bold;
-  color: #3b82f6;
-  margin-right: 10px;
+  color: #4CAF50;
+  margin-right: 12px;
 }
 
 .original-price {
-  font-size: 14px;
+  font-size: 16px;
   text-decoration: line-through;
-  color: #999;
+  color: #888;
 }
 
-.add-to-cart-btn {
-  width: 100%;
-  padding: 8px 15px;
-  background-color: #3b82f6;
-  color: white;
-  border: none;
-  border-radius: 3px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
+.product-stock {
+  margin-top: auto;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 5px 0;
 }
 
-.add-to-cart-btn:hover {
-  background-color: #0d449b;
+.in-stock {
+  color: #4CAF50;
 }
 
-.add-to-cart-btn:disabled {
-  background-color: #999;
-  cursor: not-allowed;
+.out-of-stock {
+  color: #f44336;
 }
 </style>

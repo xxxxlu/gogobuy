@@ -116,23 +116,31 @@ export default {
 <style scoped>
 .contact-page {
   padding: 48px 0;
-  background-color: #ffffff;
+  background-color: #121212;
+  color: #e0e0e0;
+  min-height: 80vh;
 }
 
 .page-header {
   text-align: center;
   margin-bottom: 48px;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #1a1a1a;
+  border-bottom: 2px solid #22c55e;
 }
 
 .page-header h1 {
   font-size: 36px;
   font-weight: 600;
-  color: #1e293b;
+  color: #ffffff;
   margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .breadcrumbs {
-  color: #64748b;
+  color: #aaa;
   font-size: 14px;
   display: flex;
   align-items: center;
@@ -141,14 +149,15 @@ export default {
 }
 
 .breadcrumbs a {
-  color: #475569;
+  color: #22c55e;
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: color 0.3s ease;
   font-weight: 500;
 }
 
 .breadcrumbs a:hover {
-  color: #3b82f6;
+  color: #16a34a;
+  text-decoration: underline;
 }
 
 .contact-content {
@@ -160,24 +169,43 @@ export default {
 }
 
 .contact-info, .contact-form {
-  background-color: #ffffff;
+  background-color: #1a1a1a;
   border-radius: 16px;
-  border: 1px solid #e2e8f0;
+  border: 1px solid #333;
   padding: 32px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-info:hover, .contact-form:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  border-color: #22c55e;
 }
 
 .contact-info h2, .contact-form h2 {
   font-size: 24px;
   font-weight: 600;
-  color: #1e293b;
+  color: #ffffff;
   margin-bottom: 24px;
   padding-bottom: 16px;
-  border-bottom: 1px solid #e2e8f0;
+  border-bottom: 1px solid #333;
+  position: relative;
+}
+
+.contact-info h2:after, .contact-form h2:after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background-color: #22c55e;
 }
 
 .contact-info > p {
   margin-bottom: 32px;
-  color: #475569;
+  color: #ccc;
   line-height: 1.6;
   font-size: 16px;
 }
@@ -186,9 +214,16 @@ export default {
   display: flex;
   margin-bottom: 28px;
   padding: 20px;
-  background-color: #f8fafc;
+  background-color: #252525;
   border-radius: 12px;
-  transition: transform 0.2s ease;
+  transition: all 0.3s ease;
+  border: 1px solid #333;
+}
+
+.info-item:hover {
+  transform: translateY(-5px);
+  border-color: #22c55e;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
 }
 
 .info-item:hover {
@@ -202,12 +237,12 @@ export default {
 .info h3 {
   font-size: 18px;
   font-weight: 600;
-  color: #1e293b;
+  color: #ffffff;
   margin-bottom: 8px;
 }
 
 .info p {
-  color: #475569;
+  color: #ccc;
   margin-bottom: 4px;
   font-size: 15px;
 }
@@ -219,7 +254,7 @@ export default {
 .social-media h3 {
   font-size: 18px;
   font-weight: 600;
-  color: #1e293b;
+  color: #ffffff;
   margin-bottom: 20px;
 }
 
@@ -231,18 +266,19 @@ export default {
 .social-icon {
   width: 44px;
   height: 44px;
-  background-color: #f8fafc;
+  background-color: #252525;
   border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.2s ease;
-  border: 1px solid #e2e8f0;
+  transition: all 0.3s ease;
+  border: 1px solid #333;
 }
 
 .social-icon:hover {
-  background-color: #3b82f6;
-  transform: translateY(-2px);
+  background-color: #22c55e;
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(34, 197, 94, 0.3);
 }
 
 .social-icon:hover img {
@@ -263,26 +299,26 @@ export default {
   display: block;
   margin-bottom: 8px;
   font-weight: 500;
-  color: #1e293b;
+  color: #e0e0e0;
   font-size: 15px;
 }
 
 .form-group input, .form-group textarea {
   width: 100%;
   padding: 12px 16px;
-  border: 1px solid #e2e8f0;
+  border: 1px solid #444;
   border-radius: 8px;
   font-size: 15px;
-  color: #1e293b;
-  background-color: #f8fafc;
-  transition: all 0.2s ease;
+  color: #e0e0e0;
+  background-color: #252525;
+  transition: all 0.3s ease;
 }
 
 .form-group input:focus, .form-group textarea:focus {
   outline: none;
-  border-color: #3b82f6;
-  background-color: #ffffff;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  border-color: #22c55e;
+  background-color: #252525;
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.2);
 }
 
 .form-group textarea {
@@ -291,7 +327,7 @@ export default {
 }
 
 .submit-btn {
-  background-color: #3b82f6;
+  background-color: #22c55e;
   color: white;
   border: none;
   padding: 14px 28px;
@@ -299,13 +335,16 @@ export default {
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
   width: 100%;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .submit-btn:hover {
-  background-color: #2563eb;
-  transform: translateY(-1px);
+  background-color: #16a34a;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(34, 197, 94, 0.4);
 }
 
 @media (max-width: 992px) {

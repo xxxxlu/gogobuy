@@ -10,7 +10,7 @@
           </div>
           <div class="header-actions">
             <div class="account">
-              <span v-if="username">Welcome, {{ username }}!</span>
+              <router-link to="/account" v-if="username">Welcome, {{ username }}!</router-link>
               <router-link v-else to="/account">My Account</router-link>
             </div>
             <div class="cart">
@@ -27,6 +27,12 @@
       <nav class="main-nav">
         <div class="container">
           <ul class="nav-items">
+            <li>
+              <router-link to="/">Home</router-link>
+            </li>
+            <li>
+              <router-link to="/products">Products</router-link>
+            </li>
             <li>
               <router-link to="/contact">Contact Us</router-link>
             </li>
@@ -51,7 +57,7 @@
           <div class="footer-column">
             <h3>email</h3>
             <ul>
-              <li><a href="#">abcshop@zontec.club</a></li>
+              <li><a href="#">gogobuy@zontec.club</a></li>
             </ul>
           </div>
           <div class="footer-column">
@@ -102,8 +108,8 @@ export default {
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   line-height: 1.6;
-  color: #2d3436;
-  background-color: #ffffff;
+  color: #e2e2e2;
+  background-color: #121212;
 }
 
 .container {
@@ -114,7 +120,7 @@ body {
 
 a {
   text-decoration: none;
-  color: #2d3436;
+  color: #e2e2e2;
   transition: all 0.3s ease;
 }
 
@@ -124,12 +130,13 @@ ul {
 
 /* Header Styles */
 header {
-  background-color: #f8f9fa;
-  border-bottom: 1px solid #edf2f7;
+  background-color: #1a1a1a;
+  border-bottom: 1px solid #333;
 }
 
 .header-top {
   padding: 20px 0;
+  background-color: #000000;
 }
 
 .header-top .container {
@@ -153,13 +160,13 @@ header {
   font-weight: 500;
   padding: 8px 16px;
   border-radius: 8px;
-  background-color: #f1f5f9;
-  color: #475569;
+  background-color: #333;
+  color: #e2e2e2;
 }
 
 .account a:hover {
-  background-color: #e2e8f0;
-  color: #1e293b;
+  background-color: #444;
+  color: #ffffff;
 }
 
 .cart-icon {
@@ -177,7 +184,7 @@ header {
   position: absolute;
   top: -6px;
   right: -6px;
-  background-color: #3b82f6;
+  background-color: #4CAF50;
   color: white;
   border-radius: 20px;
   min-width: 20px;
@@ -192,8 +199,8 @@ header {
 
 /* Navigation Styles */
 .main-nav {
-  background-color: #ffffff;
-  border-bottom: 1px solid #edf2f7;
+  background-color: #1a1a1a;
+  border-bottom: 1px solid #333;
   padding: 12px 0;
 }
 
@@ -203,14 +210,14 @@ header {
 }
 
 .nav-items a {
-  color: #64748b;
+  color: #e2e2e2;
   font-weight: 500;
   position: relative;
   padding: 6px 0;
 }
 
 .nav-items a:hover {
-  color: #3b82f6;
+  color: #4CAF50;
 }
 
 .nav-items a::after {
@@ -220,7 +227,7 @@ header {
   left: 0;
   width: 0;
   height: 2px;
-  background-color: #3b82f6;
+  background-color: #4CAF50;
   transition: width 0.3s ease;
 }
 
@@ -232,13 +239,13 @@ header {
 main {
   min-height: 600px;
   padding: 40px 0;
-  background-color: #ffffff;
+  background-color: #121212;
 }
 
 /* Footer Styles */
 footer {
-  background-color: #f8fafc;
-  color: #475569;
+  background-color: #000000;
+  color: #999;
   padding: 60px 0 30px;
 }
 
@@ -255,7 +262,7 @@ footer {
   text-transform: uppercase;
   letter-spacing: 1px;
   margin-bottom: 20px;
-  color: #1e293b;
+  color: #4CAF50;
 }
 
 .footer-column ul li {
@@ -263,13 +270,13 @@ footer {
 }
 
 .footer-column ul li a {
-  color: #64748b;
+  color: #999;
   font-size: 15px;
   transition: color 0.2s ease;
 }
 
 .footer-column ul li a:hover {
-  color: #3b82f6;
+  color: #4CAF50;
 }
 
 .payment-icons {
@@ -291,8 +298,8 @@ footer {
 .copyright {
   text-align: center;
   padding-top: 30px;
-  border-top: 1px solid #e2e8f0;
-  color: #94a3b8;
+  border-top: 1px solid #333;
+  color: #777;
   font-size: 14px;
 }
 
