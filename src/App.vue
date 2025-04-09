@@ -5,7 +5,7 @@
         <div class="container">
           <div class="logo">
             <router-link to="/">
-              <img src="" alt="gogobuy" />
+              <img src="./assets/image.png" alt="gogobuy" />
             </router-link>
           </div>
           <div class="header-actions">
@@ -57,7 +57,7 @@
           <div class="footer-column">
             <h3>email</h3>
             <ul>
-              <li><a href="#">gogobuy@zontec.club</a></li>
+              <li><a href="#">gogobuy@gogobuy.club</a></li>
             </ul>
           </div>
           <div class="footer-column">

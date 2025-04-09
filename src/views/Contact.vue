@@ -16,7 +16,7 @@
           <div class="info-item">
             <div class="info">
               <h3>Email</h3>
-              <p>gogobuy@aontec.club</p>
+              <p>gogobuy@gogobuy.club</p>
               <p>We'll respond as soon as possible</p>
             </div>
           </div>
