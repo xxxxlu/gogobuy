@@ -21,28 +21,6 @@
             </div>
           </div>
 
-          <div class="info-item">
-            <div class="info">
-              <h3>Address</h3>
-              <p>Symbios.pk Headquarters</p>
-              <p>Karachi, Pakistan</p>
-            </div>
-          </div>
-
-          <div class="social-media">
-            <h3>Follow Us</h3>
-            <div class="social-icons">
-              <a href="#" class="social-icon">
-                <img src="https://ext.same-assets.com/3844190759/4083373414.png" alt="Facebook" />
-              </a>
-              <a href="#" class="social-icon">
-                <img src="https://ext.same-assets.com/3844190759/4083373414.png" alt="Twitter" />
-              </a>
-              <a href="#" class="social-icon">
-                <img src="https://ext.same-assets.com/3844190759/4083373414.png" alt="Instagram" />
-              </a>
-            </div>
-          </div>
         </div>
 
         <div class="contact-form">
